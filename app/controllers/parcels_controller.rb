@@ -13,7 +13,11 @@ class ParcelsController < ApplicationController
   # GET /parcels/new
   def new
     @parcel = Parcel.new
-    @users = User.all.map{|user| [user.name_with_address, user.id]}
+    @sender = @parcel.build_sender
+    @receiver = @parcel.build_receiver
+    @sender.build_address
+    @receiver.build_address
+    # @users = User.all.map{|user| [user.name_with_address, user.id]}
     @service_types = ServiceType.all.map{|service_type| [service_type.name, service_type.id]}
   end
 
@@ -64,7 +68,15 @@ class ParcelsController < ApplicationController
     end
   end
 
+  def show_csv_files
+  end
+
   private
+
+    def check_if_sender_and_receiver_exist?
+
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_parcel
       @parcel = Parcel.find(params[:id])
@@ -72,8 +84,8 @@ class ParcelsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def parcel_params
-      params.require(:parcel).permit(:weight, :status, :service_type_id,
-                                     :payment_mode, :sender_id, :receiver_id,
-                                     :cost)
+      params.require(:parcel).permit(:weight, :status, :service_type_id, :payment_mode, :cost,
+         sender_attributes: [:name, :email, address_attributes: [:address_line_one, :address_line_two, :city, :state, :country,:pincode, :mobile_number]],
+         receiver_attributes: [:name, :email, address_attributes: [:address_line_one, :address_line_two, :city, :state, :country,:pincode, :mobile_number]])
     end
 end

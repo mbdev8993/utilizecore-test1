@@ -1,0 +1,22 @@
+<%= form_with(model: parcel_record) do |form| %>
+  <% if parcel_record.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(parcel_record.errors.count, "error") %> prohibited this parcel_record from being saved:</h2>
+
+      <ul>
+        <% parcel_record.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :file %>
+    <%= form.text_field :file %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

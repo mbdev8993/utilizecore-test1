@@ -19,3 +19,9 @@ end
 	user.save
 end
 
+# Create admin User
+
+User.create(name:"Bablu Patel", email:"bablu.bhumca2030@gmail.com", mobile_number:"8808611895", password:"Test@123", password_confirmation:"Test@123")
+
+
+ParcelRecord.create(file: File.open("./public/system/parcel_records/files/000/000/001/original/acs_job.xlsx", "r"), file_file_name: "acs_job.xlsx")

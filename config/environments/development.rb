@@ -73,4 +73,8 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.public_file_server.enabled = true
+  config.secret_key_base =
+  "5595323afd21a67395114a8adaded6804cd8b3865add92ad08716641a991d7adc9357aeadf84be9de16b2b708a1f44dca28fe9b69a6284af091872870cae3955"
 end

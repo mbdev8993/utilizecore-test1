@@ -13,12 +13,13 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "form-control", placeholder: "Name" %>
+
   </div>
 
   <div class="field">
     <%= form.label :email %>
-    <%= form.email_field :email %>
+    <%= form.text_field :name, class: "form-control", placeholder: "Email" %>
   </div>
 
   <%= form.fields_for :address do |f| %>

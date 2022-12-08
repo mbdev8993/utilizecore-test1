@@ -1,7 +1,8 @@
 class SearchController < ApplicationController
+  skip_before_action :authenticate_user!
   def index
     if params[:search].present?
-      @parcels = Parcel.where(id: params[:search])
+      @parcels = Parcel.where(tracking_id: params[:search])
     else
       @parcels = []
     end

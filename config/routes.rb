@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  resources :parcel_records
+  get 'download_csv', to: "parcel_records#download_csv"
   resources :service_types
   resources :parcels
   resources :addresses
+  devise_for :users
   resources :users
   root to: 'parcels#index'
   get '/search', to: 'search#index'

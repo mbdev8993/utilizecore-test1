@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Parcel Records</h1>
+
+<table>
+  <thead>
+    <tr>
+
+      <th>File Name</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @parcel_records.each do |parcel_record| %>
+      <tr>
+        <td><%= parcel_record.file_file_name %></td>
+        <td><%= link_to 'Show', parcel_record %></td>
+        <td><%= link_to 'Edit', edit_parcel_record_path(parcel_record) %></td>
+        <td><%= link_to 'Destroy', parcel_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+         <td><%= link_to "download", download_csv_path(url: parcel_record.file.path, file_name: parcel_record.file_file_name) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
